@@ -23,6 +23,19 @@ app.use((err, _req, res, _next) => {
   console.error(err);
   res.status(500).json({ message: 'Server error. Check the backend terminal for details.' });
 });
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "ImariWise Backend is running online!"
+  });
+});
+
+app.get("/api/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "API is healthy"
+  });
+});
 
 const port = Number(process.env.PORT || 5000);
 app.listen(port, () => console.log(`ImariWise API listening on http://localhost:${port}`));
